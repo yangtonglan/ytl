@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	   <beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:websocket="http://www.springframework.org/schema/websocket"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/websocket
+                http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+	     
+	   <!-- 用户 -->
+	<bean id="userDaoimpl" class="daoimpl.UserDaoimpl" ></bean>
+	<bean id="userService" class="service.UserService" >
+	  <property name="userDao" ref="userDaoimpl"></property>
+	</bean>
+	<bean id="userAction" class="action.UserAction" >
+	 <property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="userAction1" class="action.UserAction1" >
+	  <property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="passwordAction" class="action.Top.passwordAction" >
+	  <property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="PersonageAction1" class="action.Top.PersonageAction" >
+	  <property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="alteruserAction" class="action.Top.AlterUserAction" >
+	  <property name="userService" ref="userService"></property>
+	</bean>
+	
+	<!--客户 -->
+	<bean id="kehuDaoimpl" class="daoimpl.KehuDaoimpl" ></bean>
+	<bean id="kehuService" class="service.KehuService" >
+	  <property name="kehuDao" ref="kehuDaoimpl"></property>
+	</bean>
+	<bean id="kehuAction" class="action.KehuAction" >
+	  <property name="kehuService" ref="kehuService"></property>
+	   <property name="userService" ref="userService"></property>
+	</bean> 
+	 <bean id="alterKehuAction" class="action.Top.alterKehuAction" >
+	  <property name="kehuService" ref="kehuService"></property>
+	</bean>           
+	           
+	                     <!-- kehuService 类的属性 -->
+	<!--订单 -->
+	<bean id="dingdanDaoimpl" class="daoimpl.DingdanDaoimpl" ></bean>
+	<bean id="dingdanService" class="service.DingdanService" >
+	  <property name="dingdanDao" ref="dingdanDaoimpl"></property>
+	</bean>
+	<bean id="dingdanAction" class="action.DingdanAction" >
+	  <property name="dingdanService" ref="dingdanService"></property>
+	</bean> 
+    
+    <!--对手-->
+	<bean id="duishoDaoimpl" class="daoimpl.DuishoDaoimpl" ></bean>
+	<bean id="duishoService" class="service.DuishoService" >
+	  <property name="duishoDao" ref="duishoDaoimpl"></property>
+	</bean>     <!--duishoDao 属性  -->
+	<bean id="duishoAction" class="action.DuishotAction" >
+	  <property name="duishoService" ref="duishoService"></property>
+	</bean> 
+	
+	<!--项目-->
+	<bean id="projectDaoimpl" class="daoimpl.ProjectDaoimpl" ></bean>
+	<bean id="projectService" class="service.ProjectService" >
+	  <property name="projectDao" ref="projectDaoimpl"></property>
+	</bean>
+	<bean id="projectAction" class="action.ProjectAction" >
+	  <property name="projectService" ref="projectService"></property>
+	</bean> 
+	
+	<!--机会-->
+	<bean id="jihuiDaoimpl" class="daoimpl.JihuiDaoimpl" ></bean>
+	<bean id="jihuiService" class="service.JihuiService" >
+	  <property name="jihuiDao" ref="jihuiDaoimpl"></property>
+	</bean>
+	<bean id="jihuiAction" class="action.JihuiAction" >
+	  <property name="jihuiService" ref="jihuiService"></property>
+	</bean> 
+</beans>

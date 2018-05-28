@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+  <!-- 映射文件 -->
+<hibernate-mapping>
+         
+    <class name="Entity.Shangpin" table="shangpin">  <!-- 实体类名  表名-->
+        <id name="id">
+            <generator class="native" />  <!-- 主键生成策略 -->
+        </id>
+        <property name="name" not-null="true" />
+         <property name="count"/>
+         <property name="price"/>
+         <property name="total"/>
+    </class>
+</hibernate-mapping>

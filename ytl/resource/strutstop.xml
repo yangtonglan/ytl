@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="20971520"></constant>
+
+	<!-- 修改密码！ -->
+	<package name="top1" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor" class="interceptors.LoginInterceptors"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<action name="pas" class="action.Top.passwordAction" method="alter">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/form.jsp
+			</result>
+			<result name="error">/pages/top/password.jsp</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 个人资料！ -->
+		<action name="personage" class="action.Top.PersonageAction"
+			method="getUsers">
+			<interceptor-ref name="myStack" />
+			<result name="suc">/pages/top/personage.jsp</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 项目资料文件上传！ -->
+         <!-- 未登录客户拦截！ -->
+		<action name="ziliao" class="action1.ziliaoAction" method="execute">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		 
+		
+	</package>
+</struts>

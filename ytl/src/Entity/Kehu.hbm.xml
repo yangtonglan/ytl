@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+  <!-- 映射文件 -->
+<hibernate-mapping>
+   
+    <class name="Entity.Kehu" table="kehu">  <!-- 实体类名  表名-->
+        <id name="id">
+            <generator class="native" />  <!-- 主键生成策略 -->
+        </id>
+        <property name="kehuName" not-null="true" />
+        <property name="kehuPhone"/>
+         <property name="kehuGrade"/>
+         <property name="kehuTrade"/>
+         <property name="kehusource"/>
+      <set name="user">
+          <key column="kehu_id"></key>
+          <one-to-many class="Entity.User"/>
+       </set>
+    </class>
+</hibernate-mapping>

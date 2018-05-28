@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+ <hibernate-configuration>
+
+    <session-factory>
+           <!-- 数据库连接 -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ytl?characterEncoding=utf8</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+            <!-- 自动创建表 -->
+        <property name="hibernate.hbm2ddl.auto">update</property><!-- update -->
+             <!--  -->
+        <property name="show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+       <mapping resource="Entity/User.hbm.xml"/> <!-- 映射的类  注解配置成class-->
+       <mapping resource="Entity/Dingdan.hbm.xml"/>
+       <mapping resource="Entity/Duisho.hbm.xml"/>
+       <mapping resource="Entity/Guanlichi.hbm.xml"/>
+       <mapping resource="Entity/Jihui.hbm.xml"/>
+       <mapping resource="Entity/Kehu.hbm.xml"/>
+       <mapping resource="Entity/Project.hbm.xml"/>
+       <mapping resource="Entity/Shangpin.hbm.xml"/>
+    </session-factory>
+
+</hibernate-configuration>

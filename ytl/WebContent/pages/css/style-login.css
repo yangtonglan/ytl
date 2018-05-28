@@ -1,0 +1,90 @@
+@charset "utf-8";
+body {
+	background: url('../img/back/bg.png') no-repeat 0 0/cover;
+}
+.box {
+	position: relative;
+	width: 406px;
+	height: 340px;
+	margin: 150px auto;
+	background: url('../img/back/login-panel.png');
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #4D4943;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #4D4943;
+   
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #4D4943;
+   
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #4D4943;
+}
+
+/* .box form.log-for input::-webkit-input-placeholder  { WebKit browsers
+　　color: #4D4943;
+}
+
+.box form.log-for input:-moz-placeholder { Mozilla Firefox 4 to 18
+　　color: #4D4943;
+}
+
+.box form.log-for input::-moz-placeholder { Mozilla Firefox 19+
+　　color: #4D4943;
+}
+.box form.log-for input:-ms-input-placeholder { Internet Explorer 10+
+　　color: #4D4943;
+} */
+.box form.log-for input {
+	display: block;
+	text-indent: 10px;
+	font-size: 16px;
+	outline: none;
+	color: #4D4943;
+	width: 267px;
+	height: 36px;
+	border: none;
+}
+
+.box form.log-for select {
+	position: absolute;
+	top: 46px;
+    left: 135px;
+    width: 120px;
+    height: 24px;
+    font-size: 18px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    color: #4D4943;
+    background: #CCC5BA;
+}
+.box form.log-for input[name='userName'] {
+	position: absolute;
+	top: 120px;
+	left: 70px;
+	background: url(../img/back/input-field.png);
+}
+.box form.log-for input[name='password'] {
+	position: absolute;
+	top: 186px;
+	left: 70px;
+	background: url(../img/back/input-field.png);
+}
+.box form.log-for input[type='button'] {
+	position: absolute;
+	bottom: 70px;
+	left: 160px;
+	width: 91px;
+	height: 33px;
+	text-align: center;
+	text-indent: 0;
+	color: #fff;
+	font-weight: 600;
+	background: url('../img/back/btn.png');
+	cursor: pointer;
+}

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<include file="strutstop.xml"></include><!-- 引入strutstop.xml文件 -->
+
+	<constant name="struts.devMode" value="true" />
+
+	<!-- 注册跳转！ -->
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor" class="interceptors.LoginInterceptors"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="register" class="action.UserAction" method="add">
+			<result name="success" type="redirect">${pageContext.request.contextPath}/pages/form.jsp
+			</result>
+		</action>
+
+		<!-- 登录跳转！ -->
+		<action name="forms" class="action.UserAction" method="login">
+			<result name="main">/pages/main.jsp</result>
+			<result name="error">/pages/error.jsp</result>
+		</action>
+		<action name="logout" class="action.UserAction" method="logout">
+			<result name="success" type="redirect">${pageContext.request.contextPath}/pages/form.jsp
+			</result>
+		</action>
+
+		<!-- 将user管理员数据响应到页面上 -->
+		<action name="listUser" class="action.UserAction1" method="execute">
+			<interceptor-ref name="myStack" />
+			<result name="suc">/pages/main/listUser.jsp</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+
+		<!-- 修改个人资料 -->
+		<action name="alter" class="action.Top.AlterUserAction" method="alter1">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 将kehu客户数据响应到页面上 -->
+		<action name="listKehu" class="action.KehuAction" method="execute">
+			<interceptor-ref name="myStack" />
+			<result name="suc">/pages/main/listKehu.jsp</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!--将kehu客户资料显示到修改页面 -->
+		<action name="xianshikehu" class="action.KehuAction" method="xiaoshikehu">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main/add/alterKehu.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!--修改Kehu资料 -->
+		<action name="alterkehu" class="action.Top.alterKehuAction"
+			method="alterkehu1">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 添加kehu客户 -->
+		<action name="addkehu" class="action.KehuAction" method="add">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+
+		<!-- 将shangpin商品信息数据响应到页面上 -->
+		<action name="listShangpin" class="action.ShangpinAction"
+			method="execute">
+			<interceptor-ref name="myStack" />
+			<result name="suc">/pages/main/listShangpin.jsp</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+
+		<!--将shangpin信息显示到修改页面 -->
+		<action name="xianshishangpin" class="action.ShangpinAction"
+			method="xiaoshishangpin1">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main/add/altershangpin.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+
+		<!--修改商品信息 -->
+		<action name="altershangpin" class="action.Top.altershangpinAction"
+			method="altershangpin1">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 添加商品信息 -->
+		<action name="addshangpin" class="action.ShangpinAction"
+			method="add">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 将dingdan订单数据响应到页面上 -->
+		<action name="listDingdan" class="action.DingdanAction" method="execute">
+			<interceptor-ref name="myStack" />
+			<result name="suc">/pages/main/listDingdan.jsp</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 添加dingdan -->
+		<action name="adddingdan" class="action.DingdanAction" method="add">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 将Project项目管理数据响应到页面上 -->
+		<action name="listProject" class="action.ProjectAction" method="execute">
+			<interceptor-ref name="myStack" />
+			<result name="suc">/pages/main/listProject.jsp</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 添加Project项目 -->
+		<action name="addproject" class="action.ProjectAction" method="add">
+			<interceptor-ref name="myStack" />
+			<result name="suc" type="redirect">${pageContext.request.contextPath}/pages/main.jsp
+			</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 将duisho竞争对手数据响应到页面上 -->
+		<action name="listDuisho" class="action.DuishotAction" method="execute">
+			<interceptor-ref name="myStack" />
+			<result name="suc">/pages/main/listDuisho.jsp</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+		<!-- 将jihui销售机会数据响应到页面上 -->
+		<action name="listJihui" class="action.JihuiAction" method="execute">
+			<interceptor-ref name="myStack" />
+			<result name="suc">/pages/main/listJihui.jsp</result>
+			<result name="loginPage">/pages/form.jsp</result>
+		</action>
+	</package>
+</struts>
